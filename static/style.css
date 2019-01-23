@@ -1,0 +1,57 @@
+.jumbotron {
+	background: url(./images/header2.jpg) center center no-repeat;
+	color: white;
+	background-repeat: repeat;
+	padding-bottom: 60px;
+	padding-left: 60px;
+	margin-bottom: 0px;
+}
+
+#page-wrap {
+	width: auto;
+	margin-left: 150px;
+	margin-right: 150px;
+}
+
+#img.source-image {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#cont {
+	width:315px;
+}
+
+#button-row {
+	margin-top: 10px;
+	margin-left:70px;
+}
+
+h2 {
+	text-align: center;
+	font-size: 40px;
+	text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black,
+        -0.05em -0.05em black,
+        -0.05em 0.05em black,
+        0.05em -0.05em black,
+		0.05em 0.05em black;
+}
+
+.sidenav {
+	height: 100%; /* Full-height: remove this if you want "auto" height */
+  	width: 160px; /* Set the width of the sidebar */
+  	position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  	z-index: 1; /* Stay on top */
+  	top: 0; /* Stay at the top */
+ 	padding-top: 233px;
+
+}
+.col-md-offset-3 {
+    margin-left: 22%;
+}
