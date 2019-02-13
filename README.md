@@ -1,4 +1,20 @@
 # CryptoDashboard-ML
 
-A comprehensive data visualization web app of the cryptocurrency market. Using an API to fetch and store data into a SQL database, Python and Pandas is used to provide basic manipulation and anaylsis over the data with the Flask microframework serving data to the frontend with Plotly.js to visualize the data.
+A data visualization web app of the cryptocurrency market. Using Coinmetrics API to fetch and store data, it providses basic manipulation and anaylsis over the data with an interactive Plotly visualization. 
 
+## Site
+### Landing Page
+
+
+## Built with
+* Python (Pandas, Numpy)
+* MySql
+* Flask Micro Framework
+* JavaScript (jQuery- Ajax)
+* Plotly.js
+* Bootstrap
+
+## To-Do
+* Build page to host Machine Learning Blog and incorporate prediction on Landing Page
+* Build page to host sentiment analysis of Reddit & Twitter
+* Additional charts
