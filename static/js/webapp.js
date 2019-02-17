@@ -5,29 +5,40 @@ function buildCharts(sampleData) {
         x: [],
         y: [],
         type: 'scatter',
-        fill: 'tonexty'
+        fill: 'tonexty',
+        name: 'BTC'
     };
 
     const dataEth ={
         x: [],
         y: [],
         type: 'scatter',
-        fill: 'tozeroy'
+        fill: 'tozeroy',
+        name: 'ETH'
     }
     
     const dataEos ={
         x: [],
         y: [],
         type: 'scatter',
-        fill: 'green'
+        fill: 'green',
+        name: 'EOS'
     }
 
-    var layout = {
-        title: "Historical Prices of Cryptocurrencies"
+   var layout = {
+        title: "Cryptocurrency Historical Outlook",
+        xaxis: {
+            title: 'Date',
+            tickmode: 'auto',
+            nticks: 20,
+            showgrid: false
+        },
+        yaxis:{
+            title: "USD"
+        }
+        
     }
-
-
-    sampleData.map(function(oneObj) {
+    sampleData.forEach(function(oneObj) {
         var oldDate = oneObj.date
         var newDate = new Date(oldDate).toDateString();
         dataBtc.x.push(newDate)
@@ -49,57 +60,93 @@ function getData(data) {
     })
 }
 
-function buildIndChart(sampleData, assestName) {
-        const chartData ={
-        x: [],
-        y: [],
-        type: 'scatter',
-        mode: 'lines',
-    };
+function buildChart(data,assetNames) {
+    var dataObj = []
+    var temp = document.getElementById('selectInfo')
+
+    var infoName = temp.options[temp.selectedIndex].value;
+    data.forEach(function(sampleData,index){
+        const dataAsset = {
+            x: [],
+            y: [],
+            type: 'scatter',
+            name: ''
+        };
+        sampleData.forEach(function(oneObj) {
+            var oldDate = oneObj.date
+            var newDate = new Date(oldDate).toDateString();
+            dataAsset.x.push(newDate)
+            var aname = assetNames[index]+ "_" + infoName
+            console.log(aname)
+            dataAsset.y.push(oneObj[aname])
+            dataAsset.name = aname.substring(0,3).toUpperCase()
+            //dataAsset.name = (String(aname));
+        })
+        dataObj.push(dataAsset)
+    });
 
     var layout = {
-        title: "Historical Price",
+        title: "Cryptocurrency Historical Outlook",
         xaxis: {
+            title: 'Date',
             tickmode: 'auto',
             nticks: 20,
             showgrid: true
+        },
+        yaxis:{
+            title: "USD"
         }
         
-    };
-
-    var name = assestName + "_price";
-    sampleData.map(function(oneObj) {
-        var oldDate = oneObj.date
-        var newDate = new Date(oldDate).toDateString();
-        chartData.x.push(newDate);
-        chartData.y.push(oneObj[name]);
-    });
-    //console.log(chartData);
-    Plotly.newPlot('linechart',[chartData], layout);
+    }
+    
+    Plotly.newPlot('linechart',dataObj, layout);
 
 }
 
+function optionChanged(info,time='twoyr') {
+    var assetSelected = buttonTracker()
+    var apiData = []
+    var numAssets = assetSelected.length
+     assetSelected.forEach(function(element,index) {
+        Plotly.d3.json(`/data/${info}/${element}/${time}`, function(error, assetData){
+            apiData.push(assetData)
+            if(index+1 == numAssets) {
+                buildChart(apiData, assetSelected)
+            }
+        });
+     })
+}
 
-//function optionChanged(asset) {
-    //Plotly.d3.json(`/data/${asset}`, function(error, assetData){
-       // buildIndChart(assetData, asset);
-
-    //})
-//}
-function assetChange(asset) {
-    Plotly.d3.json(`/data/${asset}`, function(error, assetData){
-        buildIndChart(assetData, asset);
+function buttonTracker() {
+    var selectedButtons = Array.from(document.getElementsByClassName('btn btn-default active'))
+    return selectedButtons.map(function(oneObj){
+        return oneObj.value
     })
+}
+
+
+function assetChange(asset, event) {
+    toggleBtn(event.target)
+    var temp = document.getElementById('selectInfo');
+    var info = temp.options[temp.selectedIndex].value;
+    optionChanged(info)
+
 }
 
 function timeChange(time) {
-    var temp = document.getElementById('selectAsset');
+    var temp = document.getElementById('selectInfo');
     var asset = temp.options[temp.selectedIndex].value;
-    Plotly.d3.json(`/data/${asset}/${time}`, function(error, assetData){
-        buildIndChart(assetData,asset);
-    })
+    optionChanged(asset,time)
 }
 
-
+function toggleBtn(clickedButton) { 
+    var isActive = clickedButton.classList.contains('active');
+    if (!isActive) {
+        clickedButton.classList.add('active')
+    }
+    else {
+        clickedButton.classList.remove('active')
+    };
+}
 
 getData();

@@ -1,5 +1,3 @@
-
-
 from datetime import datetime
 from flask import Flask, jsonify,render_template,send_from_directory
 from flask_mysqldb import MySQL
@@ -14,8 +12,6 @@ from sqlalchemy.orm import Session
 
 
 
-
-
 host="localhost"
 user="root"
 passwd="password"
@@ -25,11 +21,8 @@ engine = create_engine('mysql+pymysql://' + user + ':' + passwd + '@' + host + '
 
 
 
-
 Base = declarative_base()
 Base.metadata.reflect(engine)
-
-
 
 
 
@@ -44,7 +37,6 @@ Base.prepare(engine, reflect=True)
 Crypto = Base.classes.cryptocurrency
 session = Session(engine)
 inspector = inspect(engine)
-
 
 
 
@@ -73,9 +65,6 @@ def datareturn():
         daily_data['eos_mcap']= (float(row[6]))
         json_data.append(daily_data)
     return jsonify(json_data)
-
-
-
 
 
 @app.route("/data/<asset>")
@@ -130,6 +119,38 @@ def timereturn(asset, time):
             daily_data[asset_price_name] = (float(row[2]))
             time_data.append(daily_data)
         return jsonify(time_data)
+
+
+@app.route("/data/<info>/<asset>/<time>")
+def inforeturn(info, asset, time):
+    currentyear = str(datetime.now().year)
+    asset = asset.lower()
+    info = info.lower()
+    col_name = asset+'_'+info
+    columns = ['date', col_name]
+    info_data = []
+    for row in session.query(Crypto).add_columns(*columns):
+        daily_data = {}
+        daily_data['date'] = row[1]
+        daily_data[col_name] = (float(row[2]))
+        info_data.append(daily_data)
+    if time == 'onemo':
+        return jsonify(info_data[-30:])
+    elif time == 'threemo':
+        return jsonify(info_data[-90:])
+    elif time == 'oneyr':
+        return jsonify(info_data[-730:])
+    elif time == 'twoyr':
+        return jsonify(info_data[-1095:])
+    elif time == 'ytd':
+        info_data = []
+        for row in session.query(Crypto).add_columns(*columns).filter(Crypto.date > currentyear+'-01-01'):
+            daily_data = {}
+            daily_data['date'] = row[1]
+            daily_data[col_name] = (float(row[2]))
+            info_data.append(daily_data)
+        return jsonify(info_data)
+    
 
 
 

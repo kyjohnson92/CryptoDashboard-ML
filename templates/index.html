@@ -6,22 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crypto Data</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
 <body>
     <div id ="page-wrap">
 	    <div class = "jumbotron">
             <h2>Crypto Asset Tracker and Visualization</h2>
 	    </div>
-        <nav class = "navbar navbar-default">
-        <div class="container">
-            <div class="collapse navbar-collapse">
-                <ul class ="nav navbar-nav">
-                    <li> temp </li>
-                    <li> temp </li>
-                </ul> 
-            </div>
-        </div>
+        <nav class = "navbar navbar-expand">
+            <ul class ="nav nav-pills nav-fill w-100">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Home </a>
+                </li>  
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Coin Data</a>  
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Price Forecast </a>  
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sentiment Analysis </a>    
+                </li>
+            </ul> 
         </nav>
     <div class = "sidenav">
         <div class="container" id="cont">
@@ -29,32 +37,65 @@
         </div>
     </div>
     <div class="col-md-8 col-md-offset-3 ">
+        <div id='price-banner' class="row">
+            <div id='inside-banner' class="row">
+                <div id='btc-div' class = 'col-sm-4'>Bitcoin(Btc) Live Price:
+                    <span id = 'btc-price'></span>
+  
+                </div>
+                <div id='eth-div' class = 'col-sm-4'>Ethereum(Eth) Live Price:
+                    <span id = 'eth-price'></span>
+
+                </div>
+                <div id='eos-div'class = 'col-sm-4'>Eos Live Price:
+                    <span id = 'eos-price'></span>
+
+                </div>
+            </div>
+            <div id='inside-banner' class="row">
+                <div id='btc-div' class = 'col-sm-4'> Last 24Hrs:
+   
+                    <span id = 'btc-change'></span>
+                </div>
+                <div id='eth-div' class = 'col-sm-4'> Last 24Hrs:
+
+                    <span id = 'eth-change'></span>
+                </div>
+                <div id='eos-div'class = 'col-sm-4'> Last 24Hrs:
+ 
+                    <span id = 'eos-change'></span>               
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 col-md-offset-3 ">
         <div class='row'>
-            <p3> Select Asset </p3>
-            <select id='selectAsset' onchange="optionChanged(this.value)">
-                <option value='btc'>Bitcoin Price</option>
-                <option value='eth'>Ethereum Price</option>
-                <option value='eos'>Eos Price</option>
+            <p3> Select Data </p3>
+            <select id='selectInfo' onchange="optionChanged(this.value)">
+                <option value='price'>Price</option>
+                <option value='market_cap'>Market Cap</option>
             </select>
-            <button onclick="assetChange('btc')">Bitcoin</button>
-            <button onclick="assetChange('eth')">Ethereum</button>
-            <button onclick="assetChange('eos')">EOS</button>
+            <button class='btn btn-default btn-sm' value ='btc' onclick="assetChange('btc', event)">Bitcoin</button>
+            <button class='btn btn-default btn-sm' value ='eth' onclick="assetChange('eth', event)">Ethereum</button>
+            <button class='btn btn-default btn-sm' value ='eos' onclick="assetChange('eos', event)">EOS</button>
         </div>
         <div class='row'>
-            <div id='linechart'>
-        </div>
+            <div id='linechart'></div>
         <div id="button-row" class="row">
-            <button onclick="timeChange('onemo')">1 month</button>
-            <button onclick="timeChange('threemo')">3 month</button>
-            <button onclick="timeChange('oneyr')">1 year</button>
-            <button onclick="timeChange('twoyr')">2 year</button>
-            <button onclick="timeChange('ytd')">YTD</button>
+            <button class='btn btn-default btn-sm' onclick="timeChange('onemo')">1 month</button>
+            <button class='btn btn-default btn-sm' onclick="timeChange('threemo')">3 month</button>
+            <button class='btn btn-default btn-sm' onclick="timeChange('oneyr')">1 year</button>
+            <button class='btn btn-default btn-sm' onclick="timeChange('twoyr')">2 year</button>
+            <button class='btn btn-default btn-sm' onclick="timeChange('ytd')">YTD</button>
+        </div>
+        </div>
         </div>
     </div>
 
 
 
 <script src = "../static/js/webapp.js"></script>
-</div>
+<script src = "../static/js/apicall.js"></script>
+
 </body>
 </html>

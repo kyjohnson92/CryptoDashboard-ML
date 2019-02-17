@@ -5,6 +5,23 @@
 	padding-bottom: 60px;
 	padding-left: 60px;
 	margin-bottom: 0px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+.container {
+    padding-right: 15px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#price-banner {
+	border: 10px outset rgba(28,110,164,0.9);
+	border-radius: 7px;
+	margin-bottom: 16px;
+}
+
+#inside-banner {
+	margin-left:auto;
 }
 
 #page-wrap {
@@ -12,12 +29,21 @@
 	margin-left: 150px;
 	margin-right: 150px;
 }
-
+.nav>li {
+    position: relative;
+    display: block;
+    padding-left: 93px;
+}
 #img.source-image {
 	width: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
+}
+.nav {
+    padding-left: 296px;
+    margin-bottom: 0;
+    list-style: none;
 }
 
 #cont {
@@ -28,10 +54,15 @@
 	margin-top: 10px;
 	margin-left:70px;
 }
-
+.nav>li>a {
+    position: relative;
+    display: block;
+	padding: 10px 32px;
+	font-size: large
+}
 h2 {
 	text-align: center;
-	font-size: 40px;
+	font-size: 56px;
 	text-shadow:
         0.05em 0 black,
         0 0.05em black,
@@ -49,9 +80,34 @@ h2 {
   	position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   	z-index: 1; /* Stay on top */
   	top: 0; /* Stay at the top */
- 	padding-top: 233px;
+ 	padding-top: 246px;
 
 }
 .col-md-offset-3 {
-    margin-left: 22%;
+	margin-left: 19%;
+	margin-top: -6px;
 }
+
+.active {
+	background-color: #699DBC !important; 
+	color: white !important;
+}
+
+.navbar-expand {
+    background-color: #91aba821;
+    border-color:  #78787887;
+}
+
+a {
+	color: #0a0a0a;
+	font-family: Impact, Charcoal, sans-serif;
+	letter-spacing: 1.2px;
+	
+}
+
+.navbar {
+		position: relative;
+		min-height: 42px;
+		margin-bottom: 20px;
+		border: 1px solid;
+	}
