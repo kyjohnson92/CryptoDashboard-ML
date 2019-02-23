@@ -126,6 +126,61 @@ function buttonTracker() {
 
 
 function assetChange(asset, event) {
+    if (asset == 'btc') {
+        var coin = 'BTC_ETH'
+    }
+    else{
+        var coin = 'BTC_' + asset.toUpperCase();
+    }
+    
+    var endDate = (Date.now()/1000)
+    endDate = Math.floor(endDate)
+    $.ajax({
+
+        url: "/usd/"+endDate,
+        dataType: 'json',
+        success: function(jsonUSD) {
+            $.ajax({
+                url:"https://poloniex.com/public?command=returnChartData&currencyPair="+coin + "&start=1367107200&end=" + endDate + "&period=86400",
+                dataType: 'json',
+                success: function(jsonPairData) {
+                    dailyData = []
+                    jsonPairData.forEach(function(jsonPair, index) {
+                        var low = jsonPair.low;
+                        var high = jsonPair.high;
+                        var open = jsonPair.open;
+                        var close = jsonPair.close;
+                        var volume = jsonPair.volume
+                        
+                        var usd_price = jsonUSD[index].value
+                        console.log(usd_price)
+                        var coinObj = {}
+                        if (asset = 'btc') {
+                        coinObj.low = (usd_price * close)/low;
+                        coinObj.high = (usd_price * close)/high;
+                        coinObj.open = (usd_price * close)/open;
+                        coinObj.close = usd_price;
+                        coinObj.volume = volume
+                        }
+                        else{
+                            coinObj.low = low * usd_price;
+                            coinObj.high = high * usd_price;
+                            coinObj.open = open * usd_price;
+                            coinObj.close = close * usd_price;
+                            coinObj.volume = volume
+                        }
+                        dailyData.push(coinObj)
+
+                    })
+                console.log(jsonUSD)
+                }
+            })
+        }    
+    })
+}
+
+
+function assetChange2(asset, event) {
     toggleBtn(event.target)
     var temp = document.getElementById('selectInfo');
     var info = temp.options[temp.selectedIndex].value;

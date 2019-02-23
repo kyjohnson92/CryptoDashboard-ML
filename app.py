@@ -5,6 +5,7 @@ import os
 import json
 import mysql.connector
 import pymysql
+import requests
 from sqlalchemy import create_engine, Table, Column, Integer,DateTime,String, MetaData, inspect, Float
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.ext.declarative import declarative_base
@@ -49,6 +50,17 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+@app.route("/coinData")
+def coin_data():
+    return render_template("coinData.html")
+
+@app.route("/forecast")
+def price_forecast():
+    return render_template("forecast.html")
+
+@app.route("/sentiment")
+def sentiment_analysis():
+    return render_template("sentiment.html")
 
 @app.route("/data")
 def datareturn():
@@ -66,6 +78,17 @@ def datareturn():
         json_data.append(daily_data)
     return jsonify(json_data)
 
+@app.route("/usd/<enddate>")
+def usdprice(enddate):
+    api_url = "https://coinmetrics.io/api/v1/get_asset_data_for_time_range/btc/price(usd)/1367107200/1550934383"
+    r = requests.get(api_url)
+    new_array = []
+    re = json.loads(r.content.decode())
+    x = 0
+    for i in re["result"]:
+        dict = {i[0]:i[1]}
+        new_array.append(dict)
+    return jsonify(new_array)
 
 @app.route("/data/<asset>")
 def assetreturn(asset):

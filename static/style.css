@@ -1,11 +1,48 @@
+body {
+	background-color: rgb(244, 247, 250);
+	font-family: "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	
+}
 .jumbotron {
-	background: url(./images/header2.jpg) center center no-repeat;
 	color: white;
-	background-repeat: repeat;
-	padding-bottom: 60px;
-	padding-left: 60px;
+	padding-top: 1px;
+	padding-bottom: 24px;
+	padding-left: 85px;
 	margin-bottom: 0px;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+	background-color: #337ab7
+}
+h2 {
+	text-align: left;
+	font-size: 40px;
+    text-shadow: 0.05em 0 14px black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black, -0.05em -0.05em 6px black, -0.05em 0.05em black, 0.05em -0.05em black, 0.05em 0.05em 17px black;
+}
+
+.nav {
+    padding-left: 50px;
+    margin-bottom: 0;
+	list-style: none;
+	font-weight: 500;
+}
+.navbar {
+	position: relative;
+	min-height: 42px;
+	margin-bottom: 20px;
+	border: 1px solid;
+}
+.navbar-expand {
+    background-color: #91aba821;
+    border-color:  #78787887;
+}
+.nav>li {
+    position: relative;
+    display: block;
+    padding-left: 26px;
+}
+.nav>li>a {
+    position: relative;
+    display: block;
+	padding: 10px 32px;
+	font-size: large
 }
 .container {
     padding-right: 15px;
@@ -13,26 +50,35 @@
     margin-right: auto;
     margin-left: auto;
 }
+.row {
+    margin-right: 0.5%;
+	margin-left: 0.5%;
+	margin-bottom: 0.5%
+}
+.col-md-offset-3 {
+	margin-left: 2%;
+	margin-right: 2%;
+	margin-top: -6px;
+}
 
 #price-banner {
 	border: 10px outset rgba(28,110,164,0.9);
 	border-radius: 7px;
 	margin-bottom: 16px;
+	margin-top: 40px;
+	background-color: white
 }
 
 #inside-banner {
 	margin-left:auto;
 }
 
-#page-wrap {
-	width: auto;
-	margin-left: 150px;
-	margin-right: 150px;
+#coin-div{
+	margin-bottom: 30px
 }
-.nav>li {
-    position: relative;
-    display: block;
-    padding-left: 93px;
+
+#pct-div {
+	margin-left: 40px
 }
 #img.source-image {
 	width: 100%;
@@ -40,11 +86,7 @@
 	top: 0;
 	left: 0;
 }
-.nav {
-    padding-left: 296px;
-    margin-bottom: 0;
-    list-style: none;
-}
+
 
 #cont {
 	width:315px;
@@ -54,25 +96,7 @@
 	margin-top: 10px;
 	margin-left:70px;
 }
-.nav>li>a {
-    position: relative;
-    display: block;
-	padding: 10px 32px;
-	font-size: large
-}
-h2 {
-	text-align: center;
-	font-size: 56px;
-	text-shadow:
-        0.05em 0 black,
-        0 0.05em black,
-        -0.05em 0 black,
-        0 -0.05em black,
-        -0.05em -0.05em black,
-        -0.05em 0.05em black,
-        0.05em -0.05em black,
-		0.05em 0.05em black;
-}
+
 
 .sidenav {
 	height: 100%; /* Full-height: remove this if you want "auto" height */
@@ -83,31 +107,26 @@ h2 {
  	padding-top: 246px;
 
 }
-.col-md-offset-3 {
-	margin-left: 19%;
-	margin-top: -6px;
-}
 
 .active {
 	background-color: #699DBC !important; 
 	color: white !important;
 }
 
-.navbar-expand {
-    background-color: #91aba821;
-    border-color:  #78787887;
+#blog-div {
+	text-align: center;
+	background-color: white
 }
 
 a {
 	color: #0a0a0a;
-	font-family: Impact, Charcoal, sans-serif;
 	letter-spacing: 1.2px;
 	
 }
 
-.navbar {
-		position: relative;
-		min-height: 42px;
-		margin-bottom: 20px;
-		border: 1px solid;
-	}
+.positive-change {
+	color: #11db18
+}
+.negative-change {
+	color: red
+}

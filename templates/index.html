@@ -11,87 +11,118 @@
     <link rel="stylesheet" type="text/css" href="../static/style.css">
 </head>
 <body>
-    <div id ="page-wrap">
-	    <div class = "jumbotron">
-            <h2>Crypto Asset Tracker and Visualization</h2>
-	    </div>
-        <nav class = "navbar navbar-expand">
-            <ul class ="nav nav-pills nav-fill w-100">
-                <li class="nav-item">
-                    <a class="nav-link" href="#"> Home </a>
-                </li>  
-                <li class="nav-item">
-                    <a class="nav-link" href="#"> Coin Data</a>  
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"> Price Forecast </a>  
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Sentiment Analysis </a>    
-                </li>
-            </ul> 
-        </nav>
-    <div class = "sidenav">
-        <div class="container" id="cont">
-            <iframe src="http://twubs.com/embed/cryptocurrency/?messagesPerPage=5&headerBgColor=%231c6485&headerTextColor=%23ffffff" width="300" height="600" frameborder="0"><a href="http://twubs.com/cryptocurrency">#cryptocurrency</a></iframe>
-        </div>
-    </div>
-    <div class="col-md-8 col-md-offset-3 ">
-        <div id='price-banner' class="row">
-            <div id='inside-banner' class="row">
-                <div id='btc-div' class = 'col-sm-4'>Bitcoin(Btc) Live Price:
-                    <span id = 'btc-price'></span>
-  
-                </div>
-                <div id='eth-div' class = 'col-sm-4'>Ethereum(Eth) Live Price:
-                    <span id = 'eth-price'></span>
-
-                </div>
-                <div id='eos-div'class = 'col-sm-4'>Eos Live Price:
-                    <span id = 'eos-price'></span>
-
+    <div class = "jumbotron">
+        <h2>Crypto Asset Tracker</h2>
+	</div>
+    <nav class = "navbar navbar-expand">
+        <ul class ="nav nav-pills nav-fill w-100">
+            <li class="nav-item">
+                <a class="nav-link" href="/"> Home </a>
+            </li>  
+            <li class="nav-item">
+                <a class="nav-link" href="coinData"> Coin Data</a>  
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="forecast"> Price Forecast </a>  
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="sentiment">Sentiment Analysis </a>    
+            </li>
+        </ul> 
+    </nav>
+    <div class = 'row'>
+        <div class="col-lg-12">
+            <div id='price-banner' class="col-sm-2">
+                <div id='inside-banner'>
+                    <div id='coin-div' class = 'row'>
+                        <img src = "./static/images/btc_icon.png">
+                        Bitcoin(Btc) Live Price:
+                        <b><span id = 'btc-price'></span></b>
+                        <div id = 'pct-div'>
+                            Last 24Hrs:
+                            <span id = 'btc-change'></span>
+                        </div>
+                    </div>
+                    <div id='coin-div' class = 'row'>
+                        <img src = "./static/images/eth_icon.png">
+                        Ethereum(Eth) Live Price:
+                        <b><span id = 'eth-price'></span></b>
+                        <div id = 'pct-div'> 
+                            Last 24Hrs:
+                        <span id = 'eth-change'></span>
+                        </div>
+                    </div>
+                    <div id='coin-div'class = 'row'>
+                        <img src = "./static/images/ltc_icon.png">
+                        Litecoin Live Price:
+                        <b><span id = 'ltc-price'></span></b>
+                        <div id = 'pct-div'> 
+                            Last 24Hrs:
+                            <span id = 'ltc-change'></span>               
+                        </div>
+                    </div>
+                    <div id='coin-div'class = 'row'>
+                        <img src = "./static/images/ripple_icon.png">
+                        Ripple Live Price:
+                        <b><span id = 'xrp-price'></span></b>
+                        <div id = 'pct-div'> 
+                            Last 24Hrs:
+                            <span id = 'xrp-change'></span>               
+                        </div>
+                    </div>                    
+                    <div id='coin-div'class = 'row'>
+                        <img src = "./static/images/eos_icon.png">
+                        Eos Live Price:
+                        <b><span id = 'eos-price'></span></b>
+                        <div id = 'pct-div'> 
+                            Last 24Hrs:
+                            <span id = 'eos-change'></span>               
+                        </div>                       
+                    </div>
+                    <div id='coin-div'class = 'row'>
+                        <img src = "./static/images/stellar_icon.png">
+                        Stellar Live Price:
+                        <b><span id = 'xlm-price'></span></b>
+                        <div id = 'pct-div'> 
+                            Last 24Hrs:
+                            <span id = 'xlm-change'></span>               
+                        </div>                       
+                    </div>
+                    <div id='coin-div'class = 'row'>
+                        <img src = "./static/images/dash_icon.png">
+                        Dash Live Price:
+                        <b><span id = 'dash-price'></span></b>
+                        <div id = 'pct-div'> 
+                            Last 24Hrs:
+                            <span id = 'dash-change'></span>               
+                        </div>                       
+                    </div>                    
                 </div>
             </div>
-            <div id='inside-banner' class="row">
-                <div id='btc-div' class = 'col-sm-4'> Last 24Hrs:
-   
-                    <span id = 'btc-change'></span>
+            <div class="col-md-9">
+                <div class='row'>
+                    <p3> Select Data </p3>
+                    <select id='selectInfo' onchange="optionChanged(this.value)">
+                        <option value='price'>Price</option>
+                        <option value='market_cap'>Market Cap</option>
+                    </select>
+                    <button class='btn btn-default btn-sm' value ='btc' onclick="assetChange('btc', event)">Bitcoin</button>
+                    <button class='btn btn-default btn-sm' value ='eth' onclick="assetChange('eth', event)">Ethereum</button>
+                    <button class='btn btn-default btn-sm' value ='eos' onclick="assetChange('eos', event)">EOS</button>
                 </div>
-                <div id='eth-div' class = 'col-sm-4'> Last 24Hrs:
-
-                    <span id = 'eth-change'></span>
-                </div>
-                <div id='eos-div'class = 'col-sm-4'> Last 24Hrs:
- 
-                    <span id = 'eos-change'></span>               
+                <div class='row'>
+                    <div id='linechart'></div>
+                        <div id="button-row" class="row">
+                            <button class='btn btn-default btn-sm' onclick="timeChange('onemo')">1 month</button>
+                            <button class='btn btn-default btn-sm' onclick="timeChange('threemo')">3 month</button>
+                            <button class='btn btn-default btn-sm' onclick="timeChange('oneyr')">1 year</button>
+                            <button class='btn btn-default btn-sm' onclick="timeChange('twoyr')">2 year</button>
+                            <button class='btn btn-default btn-sm' onclick="timeChange('ytd')">YTD</button>
+                        </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-8 col-md-offset-3 ">
-        <div class='row'>
-            <p3> Select Data </p3>
-            <select id='selectInfo' onchange="optionChanged(this.value)">
-                <option value='price'>Price</option>
-                <option value='market_cap'>Market Cap</option>
-            </select>
-            <button class='btn btn-default btn-sm' value ='btc' onclick="assetChange('btc', event)">Bitcoin</button>
-            <button class='btn btn-default btn-sm' value ='eth' onclick="assetChange('eth', event)">Ethereum</button>
-            <button class='btn btn-default btn-sm' value ='eos' onclick="assetChange('eos', event)">EOS</button>
-        </div>
-        <div class='row'>
-            <div id='linechart'></div>
-        <div id="button-row" class="row">
-            <button class='btn btn-default btn-sm' onclick="timeChange('onemo')">1 month</button>
-            <button class='btn btn-default btn-sm' onclick="timeChange('threemo')">3 month</button>
-            <button class='btn btn-default btn-sm' onclick="timeChange('oneyr')">1 year</button>
-            <button class='btn btn-default btn-sm' onclick="timeChange('twoyr')">2 year</button>
-            <button class='btn btn-default btn-sm' onclick="timeChange('ytd')">YTD</button>
-        </div>
-        </div>
-        </div>
-    </div>
-
 
 
 <script src = "../static/js/webapp.js"></script>
