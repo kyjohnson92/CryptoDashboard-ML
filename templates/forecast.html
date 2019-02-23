@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crypto Data</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<body>
+    <div class = "jumbotron">
+        <h2>Crypto Asset Tracker</h2>
+	</div>
+    <nav class = "navbar navbar-expand">
+        <ul class ="nav nav-pills nav-fill w-100">
+            <li class="nav-item">
+                <a class="nav-link" href="/"> Home </a>
+            </li>  
+            <li class="nav-item">
+                <a class="nav-link" href="coinData"> Coin Data</a>  
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="forecast"> Price Forecast </a>  
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="sentiment">Sentiment Analysis </a>    
+            </li>
+        </ul> 
+    </nav>
+    <div class = 'row'>
+        <div class="col-lg-12">
+            <div id='price-banner' class="col-sm-2">
+                <div id='inside-banner'>
+                    <div id='coin-div' class = 'row'>
+                        <img src = "./static/images/btc_icon.png">
+                        Bitcoin(Btc) Live Price:
+                        <b><span id = 'btc-price'></span></b>
+                        <div id = 'pct-div'>
+                            Last 24Hrs:
+                            <span id = 'btc-change'></span>
+                        </div>
+                    </div>
+                    <div id='coin-div' class = 'row'>
+                        <img src = "./static/images/eth_icon.png">
+                        Ethereum(Eth) Live Price:
+                        <b><span id = 'eth-price'></span></b>
+                        <div id = 'pct-div'> 
+                            Last 24Hrs:
+                            <span id = 'eth-change'></span>
+                        </div>
+                    </div>
+                    <div id='coin-div'class = 'row'>
+                        <img src = "./static/images/ltc_icon.png">
+                        Litecoin Live Price:
+                        <b><span id = 'ltc-price'></span></b>
+                        <div id = 'pct-div'> 
+                            Last 24Hrs:
+                            <span id = 'ltc-change'></span>               
+                        </div>
+                    </div>
+                    <div id='coin-div'class = 'row'>
+                        <img src = "./static/images/ripple_icon.png">
+                        Ripple Live Price:
+                        <b><span id = 'xrp-price'></span></b>
+                        <div id = 'pct-div'> 
+                            Last 24Hrs:
+                            <span id = 'xrp-change'></span>               
+                        </div>
+                    </div>
+                    <div id='coin-div'class = 'row'>
+                        <img src = "./static/images/eos_icon.png">
+                        Eos Live Price:
+                        <b><span id = 'eos-price'></span></b>
+                        <div id = 'pct-div'> 
+                            Last 24Hrs:
+                            <span id = 'eos-change'></span>               
+                        </div>
+                    </div>
+                    <div id='coin-div'class = 'row'>
+                        <img src = "./static/images/stellar_icon.png">
+                        Stellar Live Price:
+                        <b><span id = 'xlm-price'></span></b>
+                        <div id = 'pct-div'> 
+                            Last 24Hrs:
+                            <span id = 'xlm-change'></span>               
+                        </div>                       
+                    </div>
+                    <div id='coin-div'class = 'row'>
+                        <img src = "./static/images/dash_icon.png">
+                        Dash Live Price:
+                        <b><span id = 'dash-price'></span></b>
+                        <div id = 'pct-div'> 
+                            Last 24Hrs:
+                            <span id = 'dash-change'></span>               
+                        </div>                       
+                    </div>   
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div id = "blog-div" class="container">
+                    <h3>Crypto Asset Price Forecast</h3>
+                    <h5>An introductory attempt into Machine Learning</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script src = "../static/js/webapp.js"></script>
+<script src = "../static/js/apicall.js"></script>
+
+</body>
+</html>
