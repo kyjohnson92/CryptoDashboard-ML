@@ -4,7 +4,13 @@ A data visualization web app of the cryptocurrency market. Using Coinmetrics API
 
 ## Site
 ### Landing Page
-
+![alt text](/static/images/home.png)
+### Forecast Page
+![alt text](/static/images/forecast.png)
+### Sentiment Analysis Page
+Coming Soon - Sentiment Anaylsis of Reddit,Twitter and various social media around cryptocurrency
+### Coin Data
+Coming Soon - 
 
 ## Built with
 * Python (Pandas, Numpy)
@@ -15,6 +21,6 @@ A data visualization web app of the cryptocurrency market. Using Coinmetrics API
 * Bootstrap
 
 ## To-Do
-* Build page to host Machine Learning Blog and incorporate prediction on Landing Page
+* Incorporate prediction on Landing Page
 * Build page to host sentiment analysis of Reddit & Twitter
 * Additional charts
