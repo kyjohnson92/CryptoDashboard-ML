@@ -69,6 +69,13 @@ h2 {
 	background-color: white
 }
 
+#chart-col {
+	margin-top: 40px;
+}
+
+#chart-type {
+	margin-left: 10px;
+}
 #inside-banner {
 	margin-left:auto;
 }

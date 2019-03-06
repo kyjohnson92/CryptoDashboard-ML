@@ -2,6 +2,7 @@ from datetime import datetime
 from flask import Flask, jsonify,render_template,send_from_directory
 from flask_mysqldb import MySQL
 import os
+import time
 import json
 import mysql.connector
 import pymysql
@@ -78,17 +79,14 @@ def datareturn():
         json_data.append(daily_data)
     return jsonify(json_data)
 
-@app.route("/usd/<enddate>")
-def usdprice(enddate):
-    api_url = "https://coinmetrics.io/api/v1/get_asset_data_for_time_range/btc/price(usd)/1367107200/1550934383"
+@app.route("/api/<asset>/<data>/<startdate>")
+def usdprice(asset,data,startdate):
+    enddate = int(time.time())
+    api_url = "https://coinmetrics.io/api/v1/get_asset_data_for_time_range/"+ asset+ "/" + data + "/" + startdate + "/" + str(enddate)
     r = requests.get(api_url)
-    new_array = []
     re = json.loads(r.content.decode())
-    x = 0
-    for i in re["result"]:
-        dict = {i[0]:i[1]}
-        new_array.append(dict)
-    return jsonify(new_array)
+    return jsonify(re)
+
 
 @app.route("/data/<asset>")
 def assetreturn(asset):

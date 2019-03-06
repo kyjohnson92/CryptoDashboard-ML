@@ -99,16 +99,24 @@
                     </div>                    
                 </div>
             </div>
-            <div class="col-md-9">
+            <div id = "chart-col" class="col-md-9">
                 <div class='row'>
                     <p3> Select Data </p3>
                     <select id='selectInfo' onchange="optionChanged(this.value)">
                         <option value='price'>Price</option>
                         <option value='market_cap'>Market Cap</option>
                     </select>
-                    <button class='btn btn-default btn-sm' value ='btc' onclick="assetChange('btc', event)">Bitcoin</button>
-                    <button class='btn btn-default btn-sm' value ='eth' onclick="assetChange('eth', event)">Ethereum</button>
-                    <button class='btn btn-default btn-sm' value ='eos' onclick="assetChange('eos', event)">EOS</button>
+                    <button class='btn btn-default btn-sm btn-asset' value ='btc' onclick="assetClicked('btc', event)">Bitcoin</button>
+                    <button class='btn btn-default btn-sm btn-asset' value ='eth' onclick="assetClicked('eth', event)">Ethereum</button>
+                    <button class='btn btn-default btn-sm btn-asset' value ='ltc' onclick="assetClicked('ltc', event)">Litecoin</button>
+                    <button class='btn btn-default btn-sm btn-asset' value ='xrp' onclick="assetClicked('xrp', event)">Ripple</button>
+                    <button class='btn btn-default btn-sm btn-asset' value ='eos' onclick="assetClicked('eos', event)">EOS</button>
+                    <button class='btn btn-default btn-sm btn-asset' value ='xlm' onclick="assetClicked('str', event)">Stellar</button>
+                    <button class='btn btn-default btn-sm btn-asset' value ='dash' onclick="assetClicked('dash', event)">Dash</button>
+                    <p3 id='chart-type'>Charting Option:</p3>
+                    <button class='btn btn-default btn-sm btn-chart active' onclick="chartChange('timeseries',event)">Time Series</button>
+                    <button class='btn btn-default btn-sm btn-chart' onclick="chartChange('candlestick', event)">OHLC</button>
+                    
                 </div>
                 <div class='row'>
                     <div id='linechart'></div>

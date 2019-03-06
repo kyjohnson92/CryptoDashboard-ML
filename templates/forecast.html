@@ -102,7 +102,36 @@
             <div class="col-md-8">
                 <div id = "blog-div" class="container">
                     <h3>Crypto Asset Price Forecast</h3>
-                    <h5>An introductory attempt into Machine Learning</h5>
+                    <h5>Predicting the Future Price through Machine Learning</h5>
+                    <p>"Since everyone has access to the same information, it is impossible to regularly beat the market - that stock prices are, in fact, efficient, reflecting everything we know as investors” <br>- Eugene Fame<br>
+                        <br>
+                        It is widely held that attempts to predict the stock market, at least in the short term, are a fruitless endeavor. While the amount of quants on Wall Street and High Frequency Trading algorithms suggest this is not the case or at least that the premise that “everyone has access to the same information” is false, Cryptocurrencies offers a unique opportunity in price forecasting. Still incredibly new in the world of financial assets, cryptocurrencies are operating in a space with limited knowledge, decentralized data and fewer regulations. This allows for the opportunity to take advantage of prediction which the Efficient Market Hypothesis rejects. It is quite probable that with the right data and right machine learning models one can find an “accurate” forecast, even in a volatile space as cryptocurrency. 
+                        <br>
+                        <br>
+                        Going back to 2015 we can see that the general trend of selected assets are similar, with the S&P500 index as a frame of reference. 
+                        <br>
+                        <img src="/static/images/Crypto_Close_Subplot.png">
+                        <img src="/static/images/Crypto_Log_Prices.png">
+                        
+                        <br>
+                        And that prices are strongly correlated with each other, which makes sense given the buzz around Bitcoin and its adoption as a pseudo-index as whole.
+                        <img src="/static/images/Heatmap_Correlation.png">
+                        <br>
+                        Here is a closer look at Ethereum, which will be used to forecast in these exercises.
+                        <img src="/static/images/Eth_Close.png">
+                        <br>
+                        The first attempt was with a simple regression model, that given past closing prices, can we successfully predict future closing price. Using the SciKitLearn library to build and train our model we are successfully able to get a prediction.
+                        <img src="/static/images/Ethereum_Forecast.png">
+                        <img src="/static/images/Ethereum_Forecast_zoom.png">
+                        <br>
+                        Given the limitations of simple regression on accuratley forecasting, I created a Long short-term memory model, a type of neural network that is well-suited for time-series predictions.
+                        <img src="/static/images/LTSM.png">
+                        <br>
+                        For this exercise it should be noted that the following machine learning applications should not be used as a guide to buy or sell crypto assets, it is merely an interesting introduction into applying machine learning on cryptocurrencies. Both of these deal with only a single input, closing price, but to get a more accurate and less biased prediction, additional variables should be considered. In the future, i hope to incorporate not just additional finanical indicators in these models but variables just as Social Media Sentiment etc.
+                        <br>
+                        A link to the code can be found at <a href="https://github.com/kyjohnson92/Crypto_ML">Github Link</a>
+                        <br>
+                        </p>
                 </div>
             </div>
         </div>
